@@ -777,8 +777,8 @@ installmenu(){
 
 installbase(){
   clear
-  echo "pacstrap /mnt base linux"
-  pacstrap /mnt base linux
+  echo "pacstrap /mnt base base-devel git go net-tools openssh sudo vim linux"
+  pacstrap /mnt base base-devel git go net-tools openssh sudo vim linux
   pressanykey
 }
 
