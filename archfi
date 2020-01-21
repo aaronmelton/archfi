@@ -78,18 +78,18 @@ mainmenu(){
 
 chooselanguage(){
   options=()
-  options+=("Brazilian" "(By MaxWilliamJF)")
-  options+=("Dutch" "(By bowero)")
+  #options+=("Brazilian" "(By MaxWilliamJF)")
+  #options+=("Dutch" "(By bowero)")
   options+=("English" "(By MatMoul)")
-  options+=("French" "(By MatMoul)")
-  options+=("German" "(By untergrundbiber)")
-  options+=("Italian" "(By thegoldgoat)")
-  options+=("Hungarian" "(By KardiWeb)")
-  options+=("Polish" "(By dawidd6)")
-  options+=("Portuguese" "(By hugok)")
-  options+=("Russian" "(By Anonymous_Prodject)")
-  options+=("Spanish" "(By Mystogab)")
-  options+=("Turkish" "(By c0b41)")
+  #options+=("French" "(By MatMoul)")
+  #options+=("German" "(By untergrundbiber)")
+  #options+=("Italian" "(By thegoldgoat)")
+  #options+=("Hungarian" "(By KardiWeb)")
+  #options+=("Polish" "(By dawidd6)")
+  #options+=("Portuguese" "(By hugok)")
+  #options+=("Russian" "(By Anonymous_Prodject)")
+  #options+=("Spanish" "(By Mystogab)")
+  #options+=("Turkish" "(By c0b41)")
   sel=$(whiptail --backtitle "${apptitle}" --title "${txtlanguage}" --menu "" 0 0 0 \
     "${options[@]}" \
     3>&1 1>&2 2>&3)
@@ -118,7 +118,7 @@ setkeymap(){
   #for item in ${items}; do
   #  options+=("${item}" "")
   #done
-  items=$(find /usr/share/kbd/keymaps/ -type f -printf "%f\n" | sort -V)
+  items=$(find /usr/share/kbd/keymaps/ -name us.map.gz -printf "%f\n" | sort -V)
   options=()
   for item in ${items}; do
     options+=("${item%%.*}" "")
@@ -136,10 +136,10 @@ setkeymap(){
 
 chooseeditor(){
   options=()
-  options+=("nano" "")
+  #options+=("nano" "")
   options+=("vim" "")
-  options+=("vi" "")
-  options+=("edit" "")
+  #options+=("vi" "")
+  #options+=("edit" "")
   sel=$(whiptail --backtitle "${apptitle}" --title "${txteditor}" --menu "" 0 0 0 \
     "${options[@]}" \
     3>&1 1>&2 2>&3)
@@ -172,15 +172,15 @@ diskpartmenu(){
   options=()
   if [ "${eficomputer}" == "0" ]; then
     options+=("${txtautoparts} (gpt)" "")
-    options+=("${txtautoparts} (dos)" "")
+    #options+=("${txtautoparts} (dos)" "")
   else
     options+=("${txtautoparts} (gpt,efi)" "")
     options+=("${txtautoparts} (gpt)" "")
     options+=("${txtautoparts} (dos)" "")
     options+=("${txtautoparts} (gpt,bios+efi,noswap)" "")
   fi
-  options+=("${txteditparts} (cfdisk)" "")
-  options+=("${txteditparts} (cgdisk)" "")
+  #options+=("${txteditparts} (cfdisk)" "")
+  #options+=("${txteditparts} (cgdisk)" "")
   sel=$(whiptail --backtitle "${apptitle}" --title "${txtdiskpartmenu}" --menu "" --cancel-button "${txtback}" --default-item "${nextitem}" 0 0 0 \
     "${options[@]}" \
     3>&1 1>&2 2>&3)
@@ -527,8 +527,8 @@ formatbootdevice(){
   if [ "${efimode}" == "1" ]||[ "${efimode}" = "2" ]; then
     options+=("fat32" "(EFI)")
   fi
-  options+=("ext2" "")
-  options+=("ext3" "")
+  #options+=("ext2" "")
+  #options+=("ext3" "")
   options+=("ext4" "")
   if [ ! "${efimode}" = "1" ]&&[ ! "${efimode}" = "2" ]; then
     options+=("fat32" "(EFI)")
@@ -587,14 +587,14 @@ formatswapdevice(){
 }
 formatdevice(){
   options=()
-  options+=("btrfs" "")
-  options+=("reiserfs" "")
+  #options+=("btrfs" "")
+  #options+=("reiserfs" "")
   options+=("ext4" "")
-  options+=("ext3" "")
-  options+=("ext2" "")
-  options+=("xfs" "")
-  options+=("f2fs" "")
-  options+=("jfs" "")
+  #options+=("ext3" "")
+  #options+=("ext2" "")
+  #options+=("xfs" "")
+  #options+=("f2fs" "")
+  #options+=("jfs" "")
   if [ ! "${3}" = "noluks" ]; then
     options+=("luks" "encrypted")
   fi
@@ -777,7 +777,7 @@ installmenu(){
 
 installbase(){
   clear
-  echo "pacstrap /mnt base base-devel git go net-tools openssh sudo vi vim linux"
+  echo "pacstrap /mnt base base-devel git go net-tools openssh sudo vim linux"
   pacstrap /mnt base base-devel git go net-tools openssh sudo vi vim linux
   pressanykey
 }
